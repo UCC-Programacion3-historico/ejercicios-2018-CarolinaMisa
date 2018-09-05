@@ -1,5 +1,8 @@
 #ifndef LISTA_H
 #define LISTA_H
+#include "../../U02_Listas/Lista/Lista.h"
+#include "../../U02_Listas/Lista/Nodo.h"
+
 
 /**
  * Clase que implementa una Pila generica, ya que puede
