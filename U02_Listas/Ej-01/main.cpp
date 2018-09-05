@@ -2,7 +2,12 @@
 #include "../Lista/Lista.h"
 #include "fnInvierte.h"
 
+using namespace std;
+
 int main() {
-    std::cout << "Ejercicio 02/01\n" << std::endl;
+
+
+    cout << "Ejercicio 02/01\n" << std::endl;
+
     return 0;
 }

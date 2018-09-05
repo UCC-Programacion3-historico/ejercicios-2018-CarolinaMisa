@@ -9,7 +9,7 @@
 template<class T>
 class Pila {
 private:
-
+    Nodo
 public:
     Pila();
 
