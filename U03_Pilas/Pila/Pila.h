@@ -6,10 +6,11 @@
  * almacenar cualquier tipo de dato T
  * @tparam T cualquier tipo de dato
  */
+
 template<class T>
 class Pila {
 private:
-    Nodo
+    nodo<T> *tope;
 public:
     Pila();
 
@@ -17,9 +18,9 @@ public:
 
     void push(T dato);
 
-    T pop();
+    T pop();//sacar
 
-    bool esVacia();
+    bool esVacia();//pop hasta el final
 };
 
 
@@ -28,7 +29,10 @@ public:
  * @tparam T
  */
 template<class T>
-Pila<T>::Pila() {}
+Pila<T>::Pila() {
+
+    tope = nullptr ;
+}
 
 
 /**
@@ -36,9 +40,17 @@ Pila<T>::Pila() {}
  * utilizados en la lista
  * @tparam T
  */
+
 template<class T>
 Pila<T>::~Pila() {}
+    nodo<T> aux = tope ;
 
+    while (aux != nullptr) {
+        tope = aux.getNext() ;
+        delete aux ;
+        aux = tope ;
+
+    }
 
 /**
  * Inserta un dato en la pila
@@ -46,7 +58,14 @@ Pila<T>::~Pila() {}
  * @param dato  dato a insertar
  */
 template<class T>
-void Pila<T>::push(T dato) {}
+void Pila<T>::push(T dato) {
+
+        void Pila<T>::push(T dato) {
+        auto *nuevo = new nodo<T>(); //se creo un nodo
+        tope= nuevo ->setNext(tope); //apunta a nuevo nodo
+        nuevo -> setDato(dato);
+        tope= nuevo;
+}
 
 
 /**
@@ -55,15 +74,29 @@ void Pila<T>::push(T dato) {}
  * @return dato almacenado en el nodo
  */
 template<class T>
-T Pila<T>::pop() {}
+T Pila<T>::pop() {
+    if (tope == nullptr)
+        throw 1;
+
+    T dato = tope->getDato();
+    nodo<T> *aux = tope;
+    tope = tope->getNEXT();
+    delete aux;
+
+    return dato;
+}
 
 /**
  * Responde si la pila se encuentra Vacía
  * @tparam T
  * @return
  */
+
+
 template<class T>
 bool Pila<T>::esVacia() {
+
+    return tope == nullptr ;
 
 }
 
