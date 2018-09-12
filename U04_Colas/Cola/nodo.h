@@ -1,6 +1,4 @@
-//
-// Created by martin on 29/08/18.
-//
+
 #ifndef PROGRAMACION3_NODO_H
 #define PROGRAMACION3_NODO_H
 
