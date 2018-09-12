@@ -58,13 +58,22 @@ ColaPrioridades<T>::~ColaPrioridades() {}
  */
 template<class T>
 void ColaPrioridades<T>::encolar(T dato, int p) {
-    auto *nuevo = new nodo<T>(dato, nullptr, p);
-    if (entrada[p] != nullptr)
-        entrada[p]->setNext(nuevo);
-    else
-        salida = nuevo;
+    auto *nuevo = new nodo<T>(dato, p);
 
-    entrada = nuevo;
+    if (entrada[p] != nullptr){
+        entrada[p]->setNext(nuevo);
+        nuevo->setNext(entrada[p]->getNext(nuevo) ;
+    }
+    else {
+        nuevo->setNext(salida);
+    }
+
+    // Muevo todos los elementos de prioridades superiores que hayan estado en el mismo lugar
+    for (int i = p + 1 ; i < CANTP ; i ++) {
+        if (entrada[p] == entrada [i])
+            entrada[i] = nuevo ;
+    }
+    entrada[p] = nuevo;
 }
 
 
