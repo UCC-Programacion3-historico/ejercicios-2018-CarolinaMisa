@@ -91,9 +91,11 @@ T ColaPrioridades<T>::desencolar() {
     nodo<T> *salida_anterior = salida;
     salida = salida->getNext();
 
-    if (salida == nullptr)
-        entrada = nullptr;
-
+    for (int i = 0 ; i < CANTP ; i ++) {
+        if (salida_anterior == entrada [i])
+            entrada[i] = nullptr ;
+    }
+    
     delete salida_anterior;
     return dato;
 }
