@@ -1,4 +1,4 @@
-set(SOURCE_FILES_01 Ej-01/main.cpp Cola/Cola.h)
+set(SOURCE_FILES_01 Ej-01/main.cpp Cola/Cola.h Cola/nodo.h)
 add_executable(U04-E01 ${SOURCE_FILES_01})
 
 set(SOURCE_FILES_02 Ej-02/main.cpp)

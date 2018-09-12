@@ -8,17 +8,19 @@
  */
 
 #include "nodo.h"
+#define CANTP 10;
+
 template<class T>
-class Cola {
+class ColaPrioridades {
 private:
-    nodo<T> *entrada ;
-    nodo<T> *salida ;
+    nodo<T> *entrada[CANTP];
+    nodo<T> *salida;
 public:
-    Cola();
+    ColaPrioridades();
 
-    ~Cola();
+    ~ColaPrioridades();
 
-    void encolar(T dato);
+    void encolar(T dato, int p);
 
     T desencolar();
 
@@ -31,10 +33,12 @@ public:
  * @tparam T
  */
 template<class T>
+ColaPrioridades<T>::ColaPrioridades() {
+    for (int i=0 ; i < CANTP ; i++) {
+        entrada [i] = nullptr;
+    }
 
-Cola<T>::Cola() {
-    entrada= nullptr ;
-    salida= nullptr ;
+    salida = nullptr;
 }
 
 
@@ -44,7 +48,7 @@ Cola<T>::Cola() {
  * @tparam T
  */
 template<class T>
-Cola<T>::~Cola() {}
+ColaPrioridades<T>::~ColaPrioridades() {}
 
 
 /**
@@ -53,12 +57,14 @@ Cola<T>::~Cola() {}
  * @param dato  dato a insertar
  */
 template<class T>
-void Cola<T>::encolar(T dato) {
-    auto *nuevo= new nodo<T>(dato, nullptr) ;
-    if (entrada!= nullptr)              // entra nuevo y cambia el entrada
-        entrada->setNext(nuevo) ;
+void ColaPrioridades<T>::encolar(T dato, int p) {
+    auto *nuevo = new nodo<T>(dato, nullptr, p);
+    if (entrada[p] != nullptr)
+        entrada[p]->setNext(nuevo);
     else
-        entrada = nuevo ;   // El nodo que se inserte tenga el nombre de entrada y salida
+        salida = nuevo;
+
+    entrada = nuevo;
 }
 
 
@@ -68,18 +74,19 @@ void Cola<T>::encolar(T dato) {
  * @return dato almacenado en el nodo
  */
 template<class T>
-T Cola<T>::desencolar() {
+T ColaPrioridades<T>::desencolar() {
     if (salida == nullptr)
-        throw 1 ;
-    T dato = salida->getDato() ;
-    nodo<T> *salida_anterior = salida ;
-    salida = salida->getNext() ;
+        throw 1;
+
+    T dato = salida->getDato();
+    nodo<T> *salida_anterior = salida;
+    salida = salida->getNext();
 
     if (salida == nullptr)
-        entrada = nullptr ;
+        entrada = nullptr;
 
-    delete salida_anterior ; // Borra nodo y devuelve el dato del anterior (el borrado
-    return dato ;
+    delete salida_anterior;
+    return dato;
 }
 
 /**
@@ -88,8 +95,8 @@ T Cola<T>::desencolar() {
  * @return
  */
 template<class T>
-bool Cola<T>::esVacia() {
-    return salida == nullptr ;
+bool ColaPrioridades<T>::esVacia() {
+    return salida == nullptr;
 }
 
 #endif //LISTA_H
