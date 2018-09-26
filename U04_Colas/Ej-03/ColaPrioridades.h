@@ -8,7 +8,7 @@
  */
 
 #include "nodo.h"
-#define CANTP 10;
+#define CANTP 10
 
 template<class T>
 class ColaPrioridades {
@@ -95,7 +95,7 @@ T ColaPrioridades<T>::desencolar() {
         if (salida_anterior == entrada [i])
             entrada[i] = nullptr ;
     }
-    
+
     delete salida_anterior;
     return dato;
 }
