@@ -1,4 +1,4 @@
-set(SOURCE_FILES_01 Ej-01/main.cpp Lista/Lista.h Ej-01/fnInvierte.h Lista/Nodo.h Lista/Nodo.cpp)
+set(SOURCE_FILES_01 Ej-01/main.cpp Lista/Lista.h Ej-01/fnInvierte.h Lista/Nodo.h)
 add_executable(U02-E01 ${SOURCE_FILES_01})
 
 set(SOURCE_FILES_02 Ej-02/main.cpp)

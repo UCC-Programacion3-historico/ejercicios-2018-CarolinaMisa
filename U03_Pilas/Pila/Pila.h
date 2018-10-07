@@ -1,7 +1,7 @@
 #ifndef LISTA_H
 #define LISTA_H
-#include "../../U02_Listas/Lista/Lista.h"
-#include "../../U02_Listas/Lista/Nodo.h"
+
+#include "nodo.h"
 
 
 /**
@@ -9,7 +9,6 @@
  * almacenar cualquier tipo de dato T
  * @tparam T cualquier tipo de dato
  */
-
 template<class T>
 class Pila {
 private:
@@ -21,9 +20,9 @@ public:
 
     void push(T dato);
 
-    T pop();//sacar
+    T pop();
 
-    bool esVacia();//pop hasta el final
+    bool esVacia();
 };
 
 
@@ -33,8 +32,7 @@ public:
  */
 template<class T>
 Pila<T>::Pila() {
-
-    tope = nullptr ;
+    tope = nullptr;
 }
 
 
@@ -43,17 +41,16 @@ Pila<T>::Pila() {
  * utilizados en la lista
  * @tparam T
  */
-
 template<class T>
-Pila<T>::~Pila() {}
-    nodo<T> aux = tope ;
-
+Pila<T>::~Pila() {
+    nodo<T> aux = tope;
     while (aux != nullptr) {
-        tope = aux.getNext() ;
-        delete aux ;
-        aux = tope ;
-
+        tope = aux.getNext();
+        delete aux;
+        aux = tope;
     }
+}
+
 
 /**
  * Inserta un dato en la pila
@@ -62,12 +59,10 @@ Pila<T>::~Pila() {}
  */
 template<class T>
 void Pila<T>::push(T dato) {
-
-        void Pila<T>::push(T dato) {
-        auto *nuevo = new nodo<T>(); //se creo un nodo
-        tope= nuevo ->setNext(tope); //apunta a nuevo nodo
-        nuevo -> setDato(dato);
-        tope= nuevo;
+    auto *nuevo = new nodo<T>();
+    nuevo->setNext(tope);
+    nuevo->setDato(dato);
+    tope = nuevo;
 }
 
 
@@ -80,10 +75,9 @@ template<class T>
 T Pila<T>::pop() {
     if (tope == nullptr)
         throw 1;
-
     T dato = tope->getDato();
     nodo<T> *aux = tope;
-    tope = tope->getNEXT();
+    tope = tope->getNext();
     delete aux;
 
     return dato;
@@ -94,13 +88,9 @@ T Pila<T>::pop() {
  * @tparam T
  * @return
  */
-
-
 template<class T>
 bool Pila<T>::esVacia() {
-
-    return tope == nullptr ;
-
+    return tope == nullptr;
 }
 
 #endif //LISTA_H

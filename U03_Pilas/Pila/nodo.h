@@ -1,3 +1,7 @@
+//
+// Created by alumno on 6/10/2018.
+//
+
 #ifndef PROGRAMACION3_NODO_H
 #define PROGRAMACION3_NODO_H
 
@@ -7,15 +11,6 @@ private:
     T dato;
     nodo *next;
 public:
-    nodo(T d) {
-        dato = d;
-        next = nullptr;
-    }
-    nodo(T d, nodo *n) {
-        dato = d;
-        next = n;
-    }
-
     T getDato() {
         return dato;
     }

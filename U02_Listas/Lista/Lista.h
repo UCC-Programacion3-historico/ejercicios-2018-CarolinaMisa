@@ -1,7 +1,9 @@
 #ifndef LISTA_H
 #define LISTA_H
 
-#include "nodo.h"
+#include <list>
+
+#include "Nodo.h"
 
 /**
  * Clase que implementa una Lista Enlasada generica, ya que puede
