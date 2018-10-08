@@ -1,7 +1,3 @@
-//
-// Created by alumno on 6/10/2018.
-//
-
 #ifndef PROGRAMACION3_NODO_H
 #define PROGRAMACION3_NODO_H
 
@@ -11,26 +7,30 @@ private:
     T dato;
     nodo *next;
 public:
-    T getDato() {
+    /*nodo(T d) {
+		dato = d;
+		next = nullptr;
+	}
+	
+	nodo(T d, nodo *n) {
+		dato = d;
+		next = n;
+	}*/
+
+    void setDato(T dato) {
+        this->dato = dato;
+    }
+
+    T getDato() const {
         return dato;
     }
 
-    /**
-     *
-     * @param d
-     */
-    void setDato(T d) {
-        dato = d;
+    void setNext(nodo<T> *next) {
+        this->next = next;
     }
 
-    nodo *getNext() {
+    nodo<T>* getNext() const {
         return next;
     }
-
-    void setNext(nodo *n) {
-        next = n;
-    }
 };
-
-
-#endif //PROGRAMACION3_NODO_H
+#endif
