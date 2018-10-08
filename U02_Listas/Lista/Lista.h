@@ -125,7 +125,6 @@ void Lista<T>::insertar(unsigned int pos, T dato) {
     aux->setNext(nuevo);
 }
 
-
 /**
  * Inserta un nodo con el dato en la primera posicion
  * @tparam T
