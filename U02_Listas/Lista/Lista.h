@@ -1,8 +1,5 @@
 #ifndef LISTA_H
 #define LISTA_H
-
-#include <list>
-
 #include "Nodo.h"
 
 /**

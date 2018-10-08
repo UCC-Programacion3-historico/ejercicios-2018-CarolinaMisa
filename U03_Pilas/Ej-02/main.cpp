@@ -24,12 +24,10 @@ int main() {
         pila2.push(j);
     }
 
-
     while (!pila1.esVacia() && !pila2.esVacia()){
         if (pila1.pop() != pila2.pop())
-            cout<<"Es distinta"<<endl;
-        else
-            cout<<"es igual"<<endl;
+            cout<<"Es distinta"<<endl;              // no lee
+        cout<<"es igual"<<endl;
     }
 
 
