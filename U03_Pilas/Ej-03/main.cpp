@@ -1,7 +1,19 @@
 #include <iostream>
 #include "../Pila/Pila.h"
+using namespace std;
 
 int main() {
-    std::cout << "Ejercicio 03/03\n" << std::endl;
+    cout << "Ejercicio 03/03" << endl;
+
+
+
+
+
+
+
+
+
+
+
     return 0;
 }

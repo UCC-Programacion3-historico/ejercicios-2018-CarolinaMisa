@@ -36,8 +36,6 @@ int main() {
             for (int i = 0; i <= n; ++i) {
                 cout << "Tu lista nueva:  " << lista.getDato(i) << endl;
             }
-
-
         }
         if (opcion == 2) {
             cout << "Ingrese dato a agregar" << endl;
@@ -59,7 +57,6 @@ int main() {
                 cout << "Tu lista nueva:  " << lista.getDato(i) << endl;
             }
         }
-
 
         return 0;
     }
