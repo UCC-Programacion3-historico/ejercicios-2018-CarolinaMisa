@@ -10,16 +10,18 @@
 #include "nodo.h"
 
 template<class T>
-class ColaPrioridades {
+class Cola {
 private:
     nodo<T> *entrada;
     nodo<T> *salida;
 public:
-    ColaPrioridades();
+    Cola();
 
-    ~ColaPrioridades();
+    ~Cola();
 
     void encolar(T dato);
+
+    T mostrar();
 
     T desencolar();
 
@@ -32,7 +34,7 @@ public:
  * @tparam T
  */
 template<class T>
-ColaPrioridades<T>::ColaPrioridades() {
+Cola<T>::Cola() {
     entrada = nullptr;
     salida = nullptr;
 }
@@ -44,8 +46,22 @@ ColaPrioridades<T>::ColaPrioridades() {
  * @tparam T
  */
 template<class T>
-ColaPrioridades<T>::~ColaPrioridades() {}
+Cola<T>::~Cola() {}
 
+
+/**
+ * Muestra los valores de la lista
+ * @tparam T
+ * @return el valor de la salida
+ */
+template<class T>
+T Cola<T>::mostrar() {//sacar cosas
+    if (salida == nullptr)
+        throw 1; //excepcion
+    //or cout<<"no hay valores"<<endl;
+    T dato = salida->getDato();
+    return dato;
+}
 
 /**
  * Inserta un dato en la Cola
@@ -53,7 +69,7 @@ ColaPrioridades<T>::~ColaPrioridades() {}
  * @param dato  dato a insertar
  */
 template<class T>
-void ColaPrioridades<T>::encolar(T dato) {
+void Cola<T>::encolar(T dato) {
     auto *nuevo = new nodo<T>(dato, nullptr);
     if (entrada != nullptr)
         entrada->setNext(nuevo);
@@ -70,7 +86,7 @@ void ColaPrioridades<T>::encolar(T dato) {
  * @return dato almacenado en el nodo
  */
 template<class T>
-T ColaPrioridades<T>::desencolar() {
+T Cola<T>::desencolar() {
     if (salida == nullptr)
         throw 1;
 
@@ -91,7 +107,7 @@ T ColaPrioridades<T>::desencolar() {
  * @return
  */
 template<class T>
-bool ColaPrioridades<T>::esVacia() {
+bool Cola<T>::esVacia() {
     return salida == nullptr;
 }
 

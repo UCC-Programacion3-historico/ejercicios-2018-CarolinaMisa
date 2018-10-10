@@ -1,20 +1,29 @@
 #include <iostream>
-#include "../Lista/Lista.h"
-#include "fnInvierte.h"
+#include "C:\Users\Misa\Desktop\ejercicios-2018-CarolinaMisa\U02_Listas\Lista\Lista.h"
+#include "C:\Users\Misa\Desktop\ejercicios-2018-CarolinaMisa\U02_Listas\Ej-01\fnInvierte.h"
 using namespace std;
 
 int main() {
-    cout << "Ejercicio 02/01\n" << endl;
-    Lista<int> lista;
-    int dato;
+    cout << "Ejercicio 02/01" << endl;
+    Lista <int> *lista = new Lista <int>;
 
-    cout << "Ingrese datos de la lista" << endl;
-    for (int i = 0; i <lista.getTamanio() ; ++i) {
-        cin >> dato;
-        lista.getDato(dato);
+    cout << "Ingrese cantidad de elementos" << endl;
+    int n;
+    cin >> n;
+
+
+    cout << "Ingrese datos de la lista original" << endl;
+    for (int i = 0; i < n; ++i) {
+        int e;
+        cin >> e;
+        lista->insertar(i,e);
     }
-    lista.reemplazar(1,dato)
 
+    fnInvierte(lista);
+
+    for (int i = 0; i < n; ++i) {
+        cout << "Tu lista nueva:  " << lista->getDato(i) << endl;
+    }
 
     return 0;
 }
