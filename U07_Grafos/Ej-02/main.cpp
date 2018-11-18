@@ -1,6 +1,12 @@
 #include <iostream>
+#include "GrafoEnlazado.h"
+
+using namespace std;
 
 int main() {
-    std::cout << "Ejercicio 05/02\n" << std::endl;
+    cout << "Ejercicio 07/03\n" << endl;
+    
+    GrafoEnlazado<int> gr();
+
     return 0;
 }

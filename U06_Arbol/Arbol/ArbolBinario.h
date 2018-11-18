@@ -3,10 +3,15 @@
 
 #include "NodoArbol.h"
 
+#include <iostream>
+
+using namespace std;
+
 template<class T>
 class ArbolBinario {
 private:
     NodoArbol<T> *raiz;
+
 public:
     ArbolBinario();
 
@@ -22,8 +27,6 @@ public:
 
     void postorder();
 
-    // C reate / R ead / U pdate / Delate
-
     ~ArbolBinario();
 
     bool esVacio();
@@ -33,7 +36,7 @@ public:
 private:
     void put(T dato, NodoArbol<T> *r);
 
-    void put (NodoArbol<T> *h, NodoArbol<T> *r);
+    void put(NodoArbol<T> *h, NodoArbol<T> *r);
 
     T search(T dato, NodoArbol<T> *r);
 
@@ -44,6 +47,8 @@ private:
     void inorder(NodoArbol<T> *r);
 
     void postorder(NodoArbol<T> *r);
+
+
 };
 
 
@@ -54,7 +59,7 @@ private:
  */
 template<class T>
 ArbolBinario<T>::ArbolBinario() {
-    raiz = nullptr ;
+    raiz = nullptr;
 }
 
 
@@ -74,15 +79,15 @@ ArbolBinario<T>::~ArbolBinario() {
  * @return el valor buscado
  */
 template<class T>
-T ArbolBinario<T>::search(T dato) { // funcion recursiva llamo lado derecho o izquierdo
-
+T ArbolBinario<T>::search(T dato) {
     return search(dato, raiz);
 }
 
 template<class T>
 T ArbolBinario<T>::search(T dato, NodoArbol<T> *r) {
-   if (r== nullptr)
-       throw 404;
+
+    if (r == nullptr)
+        throw 404;
 
     if (dato == r->getDato())
         return r->getDato();
@@ -101,33 +106,38 @@ T ArbolBinario<T>::search(T dato, NodoArbol<T> *r) {
  */
 template<class T>
 void ArbolBinario<T>::put(T dato) {
-    if (raiz!= nullptr)         // Si es nula crea nodo sino pasa a la otra
-        put(dato,raiz) ;
+    if (raiz != nullptr)
+        put(dato, raiz);
     else
-        raiz= new NodoArbol<T> (dato) ;
+        raiz = new NodoArbol<T>(dato);
 }
+
 template<class T>
 void ArbolBinario<T>::put(T dato, NodoArbol<T> *r) {
-    T miDato = r->getDato() ;
+
+    T miDato = r->getDato();
 
     if (miDato == dato)
         throw 200;
 
+
     if (dato > miDato) {
         if (r->getDer() != nullptr)
             put(dato, r->getDer());
-        else
-            auto *nuevo = NodoArbol <T> (dato); //nodo nuevo
+        else {
+            auto *nuevo = new NodoArbol<T>(dato);
             r->setDer(nuevo);
-    }
-    else {
-        if (r->getIzq()!= nullptr)
-            put (dato, r->getIzq());
-        else
-            auto *nuevo = NodoArbol<T> (dato);
+        }
+    } else {
+        if (r->getIzq() != nullptr)
+            put(dato, r->getIzq());
+        else {
+            auto *nuevo = new NodoArbol<T>(dato);
             r->setIzq(nuevo);
+        }
     }
 }
+
 template<class T>
 void ArbolBinario<T>::put(NodoArbol<T> *h, NodoArbol<T> *r) {
 
@@ -148,17 +158,20 @@ void ArbolBinario<T>::put(NodoArbol<T> *h, NodoArbol<T> *r) {
     }
 }
 
+
 /**
  * Elimina un dato del árbol
  * @param clave Clave para identificar el nodo a borrar
  */
 template<class T>
 void ArbolBinario<T>::remove(T dato) {
-    raiz = remove(dato,raiz) ;
+    raiz = remove(dato, raiz);
 }
+
 template<class T>
-void *ArbolBinario<T>::remove(T dato, NodoArbol<T> *r) {
-    if (r== nullptr)
+NodoArbol<T> *ArbolBinario<T>::remove(T dato, NodoArbol<T> *r) {
+
+    if (r == nullptr)
         throw 404;
 
     if (dato > r->getDato()) {
@@ -170,7 +183,9 @@ void *ArbolBinario<T>::remove(T dato, NodoArbol<T> *r) {
         r->setIzq(remove(dato, r->getIzq()));
         return r;
     }
-    //if (dato == r->getDato())
+
+
+//if (dato == r->getDato())
     NodoArbol<T> *aux;
     if (r->getIzq() != nullptr) {
         if (r->getDer()) {
@@ -185,7 +200,6 @@ void *ArbolBinario<T>::remove(T dato, NodoArbol<T> *r) {
 
     return aux;
 }
-
 
 
 /**
